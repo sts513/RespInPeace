@@ -20,6 +20,7 @@
 from operator import itemgetter
 import math
 import warnings
+import csv
 
 from scipy.io import wavfile
 import numpy as np
@@ -357,7 +358,7 @@ class Resp(Sampled):
         holds = []
         for l, h in zip(hold_bot, hold_top):
             within_hold_region = np.logical_and(
-                intr_resp >= min(l, h), intr_resp <= max(l, h)).astype(np.int)
+                intr_resp >= min(l, h), intr_resp <= max(l, h)).astype(np.int64)
             hold_cand = self._find_islands(within_hold_region, 0)
             hold_cand_durs = np.array([x[1] - x[0] for x in hold_cand])
             holds.append(hold_cand[np.argmax(hold_cand_durs)])
@@ -589,10 +590,10 @@ class Resp(Sampled):
         """
 
         if tmin is not None and tmax is not None:
-            vc_bot = self.samples.idt[tmin]
-            vc_top = self.samples.idt[tmax]
+            vc_bot = self.idt[tmin]
+            vc_top = self.idt[tmax]
         elif tstart is not None and tend is not None:
-            resp_vc = self.samples.idt[tstart:tend]
+            resp_vc = self.idt[tstart:tend]
             vc_bot = np.min(resp_vc)
             vc_top = np.max(resp_vc)
         else:
@@ -737,7 +738,7 @@ class Resp(Sampled):
     #     if any(gaps):
     #         raise ValueError('No gaps allowed in between cycles.')
 
-    #     bounds = np.round([i.start_time * self.samp_freq for i in cycles]).astype(np.int)
+    #     bounds = np.round([i.start_time * self.samp_freq for i in cycles]).astype(np.int64)
     #     troughs, peaks = bounds[::2], bounds[1::2]
 
     #     return troughs, peaks
@@ -779,11 +780,11 @@ class TimeIndexer:
         sample is returned."""
 
         if method == 'nearest':
-            idx = np.round(t * self.samp_freq).astype(np.int)
+            idx = np.round(t * self.samp_freq).astype(np.int64)
         elif method == 'ceil':
-            idx = np.ceil(t * self.samp_freq).astype(np.int)
+            idx = np.ceil(t * self.samp_freq).astype(np.int64)
         elif method == 'floor':
-            idx = np.floor(t * self.samp_freq).astype(np.int)
+            idx = np.floor(t * self.samp_freq).astype(np.int64)
         else:
             raise ValueError('Unknown method: {}'.format(method))
 

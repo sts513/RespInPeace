@@ -18,7 +18,7 @@ import logging
 from math import pi, log
 import numpy as np
 import pylab
-from scipy import fft, ifft
+from scipy.fft import fft, ifft
 from scipy.optimize import curve_fit
 from scipy.signal import cspline1d_eval, cspline1d
 
@@ -194,7 +194,7 @@ def peakdetect(y_axis, x_axis = None, lookahead = 200, delta=0):
     
     #maxima and minima candidates are temporarily stored in
     #mx and mn respectively
-    mn, mx = np.Inf, -np.Inf
+    mn, mx = np.inf, -np.inf
     
     #Only detect peak if there is 'lookahead' amount of points after it
     for index, (x, y) in enumerate(zip(x_axis[:-lookahead], 
@@ -207,15 +207,15 @@ def peakdetect(y_axis, x_axis = None, lookahead = 200, delta=0):
             mnpos = x
         
         ####look for max####
-        if y < mx-delta and mx != np.Inf:
+        if y < mx-delta and mx != np.inf:
             #Maxima peak candidate found
             #look ahead in signal to ensure that this is a peak and not jitter
             if y_axis[index:index+lookahead].max() < mx:
                 max_peaks.append(mxpos)
                 dump.append(True)
                 #set algorithm to only find minima now
-                mx = np.Inf
-                mn = np.Inf
+                mx = np.inf
+                mn = np.inf
                 if index+lookahead >= length:
                     #end is within lookahead no more peaks can be found
                     break
@@ -225,15 +225,15 @@ def peakdetect(y_axis, x_axis = None, lookahead = 200, delta=0):
             #    mxpos = x_axis[np.where(y_axis[index:index+lookahead]==mx)]
         
         ####look for min####
-        if y > mn+delta and mn != -np.Inf:
+        if y > mn+delta and mn != -np.inf:
             #Minima peak candidate found 
             #look ahead in signal to ensure that this is a peak and not jitter
             if y_axis[index:index+lookahead].min() > mn:
                 min_peaks.append(mnpos)
                 dump.append(False)
                 #set algorithm to only find maxima now
-                mn = -np.Inf
-                mx = -np.Inf
+                mn = -np.inf
+                mx = -np.inf
                 if index+lookahead >= length:
                     #end is within lookahead no more peaks can be found
                     break
