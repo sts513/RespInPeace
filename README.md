@@ -12,7 +12,7 @@ compatibility. The original project has not been updated since September
 
 - Original repository (GitLab, canonical): [gitlab.com/mwlodarczak/RespInPeace](https://gitlab.com/mwlodarczak/RespInPeace/)
 - Original repository (GitHub mirror): [github.com/mwlodarczak/RespInPeace](https://github.com/mwlodarczak/RespInPeace)
-- **This fork:** _[INSERT FORK URL HERE ONCE CREATED]_
+- **This fork:** [_[INSERT FORK URL HERE ONCE CREATED]_](https://github.com/sts513/RespInPeace)
 - Full list of changes made in this fork: see [`CHANGES.md`](./CHANGES.md)
 
 No detection thresholds, algorithms, or scientific logic were changed in
@@ -68,9 +68,7 @@ to a specific release, you can use 10.5281/zenodo.2539335 to refer to all
 versions of the original project.
 
 **To additionally cite this patched fork specifically** (recommended if your
-results depend on it, for exact reproducibility): _[INSERT FORK DOI HERE ONCE
-ARCHIVED -- see CHANGES.md and the accompanying methods documentation for
-suggested citation wording]_.
+results depend on it, for exact reproducibility): [![DOI](https://zenodo.org/badge/1340803773.svg)](https://doi.org/10.5281/zenodo.22031749).
 
 ## Acknowledgments
 
