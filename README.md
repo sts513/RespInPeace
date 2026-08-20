@@ -68,7 +68,7 @@ to a specific release, you can use 10.5281/zenodo.2539335 to refer to all
 versions of the original project.
 
 **To additionally cite this patched fork specifically** (recommended if your
-results depend on it, for exact reproducibility): [https://zenodo.org/badge/1340803773.svg](https://doi.org/10.5281/zenodo.22031749).
+results depend on it, for exact reproducibility) doi: [10.5281/zenodo.22031750](https://doi.org/10.5281/zenodo.22031749).
 
 ## Acknowledgments
 
